@@ -39,6 +39,25 @@ class HomeScreen extends StatelessWidget {
   Widget _buildDrawer() {
     final children = [
       _buildDrawerHeader(),
+      _buildDrawerMenu(Icons.home, 'ホーム', color: Colors.lightBlue[300]),
+      _buildDrawerMenu(Icons.favorite, 'For You', color: Colors.red),
+      _buildDrawerMenu(Icons.person, 'お気に入り'),
+      _buildDrawerMenu(Icons.format_quote, '関心ワード'),
+      const Divider(),
+      _buildDrawerMenu(Icons.public, '世の中', color: Colors.brown[200]),
+      _buildDrawerMenu(Icons.trending_up, '政治と経済', color: Colors.brown[200]),
+      _buildDrawerMenu(Icons.home, '暮らし', color: Colors.green[300]),
+      _buildDrawerMenu(Icons.school, '学び', color: Colors.green[300]),
+      _buildDrawerMenu(Icons.desktop_windows, 'テクノロジー',
+          color: Colors.lightBlue),
+      _buildDrawerMenu(Icons.straighten, 'エンタメ', color: Colors.orange),
+      _buildDrawerMenu(Icons.videogame_asset, 'アニメとゲーム', color: Colors.orange),
+      _buildDrawerMenu(Icons.sentiment_very_satisfied, 'おもしろ',
+          color: Colors.orange),
+      const Divider(),
+      _buildDrawerMenu(Icons.notifications, '通知'),
+      _buildDrawerMenu(Icons.lightbulb_outline, '基本のTips'),
+      _buildDrawerMenu(Icons.settings, '設定'),
     ];
 
     return Drawer(
@@ -79,6 +98,30 @@ class HomeScreen extends StatelessWidget {
       padding: padding,
       child: Row(
         children: children,
+      ),
+    );
+  }
+
+  Widget _buildDrawerMenu(IconData iconData, String text, {Color color}) {
+    const padding = EdgeInsets.symmetric(horizontal: 8, vertical: 6);
+
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: padding,
+        child: Row(
+          children: [
+            Padding(
+              padding: padding,
+              child: Icon(iconData, color: color != null ? color : Colors.grey),
+            ),
+            const SizedBox(width: 16),
+            Padding(
+              padding: padding,
+              child: Text(text),
+            ),
+          ],
+        ),
       ),
     );
   }
